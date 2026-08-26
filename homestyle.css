@@ -33,6 +33,7 @@ footer {
     color: beige;
     font-size: 2rem;
 }
+
 @media (min-width: 800px) {
     .top {
         background-color: #252525;
@@ -46,8 +47,14 @@ footer {
         font-size: 2.5rem;
     }
 
+    .front {
+        padding-left: 20px;
+    }
+
     .center ui { 
         display: flex;
+        position: center;
+        padding: 5px 15px 5px 15px;
         gap: 20px;
     }
     .center li {
@@ -103,10 +110,128 @@ footer {
         text-decoration: none;
         color: beige;
     }
+
+    body .hamburg-btn {
+        display: none;
+    }
+}
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    /*
+    .main {
+        max-width: 100%;
+    }
+    */
+    .top {
+        display: none;
+    }
+
 }
 
 header {
     position: sticky;
     top: 0;
     z-index: 1000;    
+}
+
+.hamburg-btn {
+    display: flex;
+    justify-content: end;
+}
+
+.hamburg-btn li {
+    list-style: none;
+}
+
+.hamburg-btn button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: beige;
+}
+
+.hamburg-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #252525;
+    border-left: 2px solid beige;
+    padding: 1rem;
+    display: none;
+    flex-direction: column;
+    box-shadow: -2px 0 8px beige;
+    z-index: 1001;
+}
+
+.hamburg-open {
+    display: flex;
+}
+
+.hamburg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    color: beige;
+    font-size: 2rem;
+}
+
+.hamburg-header h2 {
+    padding: 0;
+}
+
+.hamburg-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    max-height: 90%;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hamburg-items li {
+    list-style: none;
+}
+
+.hamburg-items a {
+    text-decoration: none;
+    color: beige;
+}
+
+.hamburg-auth {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.hamburg-auth li {
+    list-style: none;
+}
+
+.hamburg-auth a {
+    text-decoration: none;
+    color: beige;
+}
+
+.hamburg-close {
+    background: none;
+    border: 2px solid beige;
+    font-size: 1.25rem;
+    color: beige;
+    cursor: pointer;
+    padding: 2px 10px 5px 10px;
+    border-radius: 10px;
+    transition: background 0.2s ease, transform 0.1 ease;
 }

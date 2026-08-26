@@ -33,15 +33,53 @@
             </div>
         </div>
     </header>
+        <div class="hamburg-btn">
+            <li><button onclick="toggleHamburg()">&#9776;</button></li>
+        </div>
 
     <main>
         <div class="content">
             <h2>Welcome to Avori</h2>
             <p>Discover our latest products and offers.</p>
+            <p style="font-family: Arial;"><u style="font-family: Arial;">NOTES</u><br>need find new font something where have both upper and lower case letters<br>just look through the whole site. by the time u read this, i should be done with all the pages<br>any design changes also need let me know. like what uw change color, what need smaller/bigger or stuff liddat. just dm me. take ur time to do the designs. no hurry.</p>
         </div>
     </main>
-</body>
+<div class="hamburg-menu" id="hamburg-menu">
+    <div class="hamburg-header">
+        <h2>Menu</h2>
+        <button class="hamburg-close" onclick="toggleHamburg()">✖</button>
+    </div>
+    <div class="hamburg-items">
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+        <li><a href="pages/shop.html">Shop</a></li>
+    </div>
+    <div class="hamburg-auth">
+        <li><a href="pages/auth/login.html">Login</a></li>
+        <li><a href="pages/auth/signup.html">Signup</a></li>
+    </div>
+</div>
 <footer>
-    <p>&copy; 2026 Avori &trade;. All rights reserved</p>
+    <p>&copy; 2026 Avori &trade;. All rights reserved.</p>
 </footer>
+<script>
+    function toggleHamburg() {
+        const hamburgEl= document.getElementById("hamburg-menu");
+        hamburgEl.classList.toggle("hamburg-open");
+        console.log("Hamburger menu toggled", hamburgEl.classList);
+    }
+
+    document.addEventListener("click", function (e) {
+        const hamburgMenu = document.getElementById("hamburg-menu")
+        const hamburgButton = document.getElementById(".hamburg-btn button")
+    if (
+        hamburgMenu.classList.contains("hamburg-open") &&
+        !hamburgMenu.contains(e.target) &&
+        !hamburgButton.contains(e.target)
+    ) {
+        hamburgMenu.classList.remove("hamburg-open")
+    }
+    });
+</script>
+</body>
 </html>
