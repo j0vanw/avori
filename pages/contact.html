@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="/assets/fonts/font.css">
+    <title>About Avori</title>
+</head>
+<body>
+    <header>
+        <div class="top">
+            <div class="front">
+                <p>Avori &trade;</p>
+            </div>
+            <div class="center">
+                <ui>
+                    <li><a href="/home.html">Home</a></li>
+                    <li ><a href="about.html">About</a></li>
+                    <li class="active"><a href="contact.html">Contact</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ui>
+            </div>
+            <div class="end">
+                <div id="guest">
+                    <li><a href="auth/login.html">Login</a></li>
+                    <li><a href="auth/signup.html">Signup</a></li>
+                </div>
+                <div id="user" style="display: none;">
+                    <span id="userInfo">test</span>
+                    <button id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+        <div class="hamburg-btn">
+            <li><button onclick="toggleHamburg()">&#9776;</button></li>
+        </div>
+    
+    <main>
+        <div class="content">
+            <h2>Contact Avori</h2>
+            <p>You can contact me directly at these platforms.</p>
+            <p>Email | Whatsapp | Instagram | Tiktok | Facebook</p>
+            <p style="font-family: Arial;"><u style="font-family: Arial;">NOTES</u><br>all the diff platforms will be links ah</p>
+        </div>
+    </main>
+<div class="hamburg-menu" id="hamburg-menu">
+    <div class="hamburg-header">
+        <h2>Menu</h2>
+        <button class="hamburg-close" onclick="toggleHamburg()">✖</button>
+    </div>
+    <div class="hamburg-items">
+        <li><a href="/home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="shop.html">Shop</a></li>
+    </div>
+    <div class="hamburg-auth">
+        <li><a href="auth/login.css">Login</a></li>
+        <li><a href="auth/signup.html">Signup</a></li>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2026 Avori &trade;. All rights reserved.</p>
+</footer>
+<script>
+    function toggleHamburg() {
+        const hamburgEl= document.getElementById("hamburg-menu");
+        hamburgEl.classList.toggle("hamburg-open")
+        console.log("Hamburger Menu Toggled", hamburgEl.classList);
+    }
+
+    document.addEventListener("click", function (e) {
+        const hamburgMenu = document.getElementById("hamburg-menu")
+        const hamburgButton = document.getElementById(".hamburg-btn button")
+    if (
+        hamburgMenu.classList.contains("hamburg-open") &&
+        !hamburgMenu.contains(e.target) &&
+        !hamburgButton.contains(e.target)
+    ) {
+        hamburgMenu.classList.remove("hamburg-open")
+    }
+    });
+</script>
+</body>
+</html>
