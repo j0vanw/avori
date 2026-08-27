@@ -39,6 +39,7 @@
         <li><button class="hamburg-btn" onclick="toggleHamburg()">&#9776;</button></li>
     </div>
 </div>
+
 <main>
     <section class="products-grid">
         <div class="product-card" data-id="1" data-name="Black Shirt" data-price="100">
@@ -55,6 +56,7 @@
         </div>
     </section>
 </main>
+
 <div class="hamburg-menu" id="hamburg-menu">
     <div class="hamburg-header">
         <h2>Menu</h2>
@@ -70,18 +72,28 @@
         <li><a href="auth/signup.html">Signup</a></li>
     </div>
 </div>
+
 <div class="cart" id="cart">
     <div class="cart-header">
-        <h2>Your Cart</h2>
+        <h2>Cart</h2>
         <button class="cart-close" onclick="toggleCart()">✖</button>
     </div>
     <div id="cart-items"></div>
     <div class="cart-total">Total: $<span id="cart-total">0</span></div>
     <div class="checkout-btn">
-        <button onclick="checkoutStripe()">Pay with Stripe</button>
         <button onclick="checkoutPayNow()">Pay with PayNow</button>
+        <button onclick="checkoutStripe()">Pay with Stripe</button>
     </div>
 </div>
+
+<div class="custom-alert" id="payment-alert">
+    <div class="alert-box">
+        <h2 id="payment-alert-title">Payment</h2>
+        <p id="payment-alert-message"></p>
+        <button onclick="closePaymentAlert()">OK</button>
+    </div>
+</div>
+
 <footer>
     <p>&copy; 2026 Avori &trade;. All rights reserved.</p>
 </footer>
@@ -169,5 +181,20 @@
             hamburgMenu.classList.remove("hamburg-open")
         }
     });
+
+    function showPaymentAlert(title, message) {
+        document.getElementById("payment-alert-title").innerText = title;
+        document.getElementById("payment-alert-message").innerText = message;
+        document.getElementById("payment-alert").classList.add("show");
+    }
+    function closePaymentAlert() {
+        document.getElementById("payment-alert").classList.remove("show");    
+    }        
+    function checkoutPayNow() {
+        showPaymentAlert("PayNow", "PayNow will be implemented soon.")
+    }
+    function checkoutStripe() {
+        showPaymentAlert("Stripe", "Stripe will be implemented soon.")
+    }
 </script>
 </html>
