@@ -44,11 +44,12 @@ footer {
         justify-content: space-between;
         padding: 10px 20px 10px 20px;
         box-shadow: 0 1px 20px beige;
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .front {
         padding-left: 20px;
+        font-size: 2.5rem;
     }
 
     .center ui { 
@@ -178,7 +179,7 @@ header {
     align-items: center;
     margin-bottom: 0;
     color: beige;
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 
 .hamburg-header h2 {
@@ -193,7 +194,7 @@ header {
     gap: 10px;
     margin-top: 20px;
     max-height: 90%;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bold;
 }
 
@@ -213,7 +214,7 @@ header {
     justify-content: center;
     gap: 1rem;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .hamburg-auth li {

@@ -33,21 +33,25 @@
             </div>
         </div>
     </header>
-<div class="cart&hamburg">
+<div class="cart-hamburg">
     <div class="cart-btn">
         <li><button onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button></li>
-    </div>
-    <div class="hamburg-btn">
-        <li><button onclick="toggleHamburg()">&#9776;</button></li>
+        <li><button class="hamburg-btn" onclick="toggleHamburg()">&#9776;</button></li>
     </div>
 </div>
 <main>
     <section class="products-grid">
-        <div class="product-card" data-id="1" data-name="White Tee" data-price="100">
+        <div class="product-card" data-id="1" data-name="Black Shirt" data-price="100">
             <img src="/assets/imgs/black-shirt.png" alt="Black Shirt">
-            <h3>Black Tee</h3>
+            <h3>Black Shirt</h3>
             <p>$100</p>
             <button class="addCart" onclick="addToCart(1)">Cart</button>
+        </div>
+        <div class="product-card" data-id="2" data-name="Black Cap" data-price="200">
+            <img src="/assets/imgs/black-cap.png" alt="Black Cap">
+            <h3>Black Cap</h3>
+            <p>$200</p>
+            <button class="addCart" onclick="addToCart(2)">Cart</button>
         </div>
     </section>
 </main>
@@ -60,7 +64,6 @@
         <li><a href="/home.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="shop.html">Shop</a></li>
     </div>
     <div class="hamburg-auth">
         <li><a href="auth/login.css">Login</a></li>
@@ -82,4 +85,89 @@
 <footer>
     <p>&copy; 2026 Avori &trade;. All rights reserved.</p>
 </footer>
+<script>
+    const cart =[]
+    const products = {
+        1: {id: 1, name:"Black Tee", price:"100"},
+        2: {id: 2, name:"Black Cap", price:"200"},
+    };
+
+    function addToCart(id) {
+        const existing =cart.find(item => item.id === id);
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push({ ...products[id], qty: 1});
+        }
+        updateCart();
+    }
+    function updateCart() {;
+        const cartItems = document.getElementById("cart-items")
+        const cartTotal = document.getElementById("cart-total")
+        const cartCount = document.getElementById("cart-count")
+        cartItems.innerHTML = "";
+        let total = 0;
+        let count = 0;
+        cart.forEach(item => {
+            total += item.price * item.qty;
+            count += item.qty;
+            const div = document.createElement("div")
+            div.className = "cart-item";
+            const text = document.createElement("span");
+            text.innerText = `${item.name} x ${item.qty} - $${item.price * item.qty}`;
+            const deleteBtn = document.createElement("button");
+            deleteBtn.innerText = "🗑️";
+            deleteBtn.className = "delete-btn";
+            deleteBtn.onclick = () => {
+                item.qty--;
+                if (item.qty <= 0) {
+                    const index = cart.findIndex(cartItem => cartItem.id === item.id);
+                    cart.splice(index, 1);
+                }
+                updateCart();
+            };
+            div.appendChild(text)
+            div.appendChild(deleteBtn)
+            cartItems.appendChild(div);
+        });
+        cartTotal.innerText = total.toFixed(2);
+        cartCount.innerText = count;
+    }
+
+    function toggleCart() {
+        const cartEl = document.getElementById("cart")
+        cartEl.classList.toggle("cart-open");
+        console.log("Cart Toggled", cartEl.classList);
+    }
+    document.addEventListener("click", function (e) {
+        const cart = document.getElementById("cart")
+        const cartButton = document.getElementById("cart-btn button");
+
+        if (
+            cart.classList.contains("cart-open") &&
+            !cart.contains(e.target) &&
+            !cartButton.contains(e.target)
+        ) {
+            cart.classList.remove("cart-open");
+        }
+    });
+
+    function toggleHamburg() {
+        const hamburgEl = document.getElementById("hamburg-menu")
+        hamburgEl.classList.toggle("hamburg-open")
+        console.log("Hamburger menu toggled", hamburgEl.classList)
+    }
+    document.addEventListener("click", function (e) {
+        const hamburgMenu = document.getElementById("hamburg-menu")
+        const hamburgButton = document.querySelector(".hamburg-btn button")
+
+        if (
+            hamburgMenu.classList.contains("hamburg-open") &&
+            !hamburgMenu.contains(e.target) &&
+            !hamburgButton.contains(e.target)
+        ) {
+            hamburgMenu.classList.remove("hamburg-open")
+        }
+    });
+</script>
 </html>
